@@ -1,9 +1,10 @@
-
 language: ruby
 rvm:
   - 2.5.0
 services:
   - postgresql
+before_script:
+  - RAILS_ENV=test bundle exec rake db:create
 script:
   - bundle install
   - bin/rails db:drop
@@ -19,5 +20,5 @@ deploy:
   on:
     repo: GuyCalloway/acebook-good-guys
 run:
-- 'rake db:migrate'
-- restart
+  - "rake db:migrate"
+  - restart
