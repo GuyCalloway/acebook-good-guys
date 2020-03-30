@@ -8,6 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'pry'
+gem 'pry-nav'
 gem 'clearance'
 gem 'jbuilder', '~> 2.5'
 gem 'pg'
