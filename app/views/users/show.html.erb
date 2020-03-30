@@ -46,15 +46,14 @@
                         <%= link_to 'Delete |', post_path(post),
                     method: :delete,
                     data: { confirm: 'Are you sure?' } if current_user.id == post.user_id%>
-                            <%= link_to 'Show comments', post_path(post) %>
-                                <h5>Comments</h5>
-                                <% post.comments.each do |comment| %>
-
-                                    <p>
-                                        <strong>Comment:</strong>
-                                        <%= comment.body %>
-                                    </p>
-                    <% end %>
+                            <%= link_to 'Comments', post_path(post) %>
+                  <% like_check = post.likes.find { |like| like.user_id == current_user.id} %>
+    <% if like_check %>
+      <%= button_to 'Unlike', post_like_path(post, like_check), method: :delete %>
+    <% else %>
+      <%= button_to 'Like', post_likes_path(post), method: :post %>
+    <% end %>
+                              
           <%end%>
     </ul>
 
