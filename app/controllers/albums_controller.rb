@@ -30,7 +30,6 @@ class AlbumsController < ApplicationController
     # @album = Album.find(params[:id])
     @album.destroy
     redirect_to albums_path
-    
   end
 
   def update
@@ -47,13 +46,10 @@ class AlbumsController < ApplicationController
         render 'edit'
       end
     end
-    # require 'pry'
-    # binding.pry
   end
 
   def delete_image_attachment
     @image = ActiveStorage::Blob.find(params[:id])
-    # p @image
     @image.purge_later
     redirect_to albums_url
   end
