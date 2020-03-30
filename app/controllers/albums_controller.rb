@@ -30,6 +30,7 @@ class AlbumsController < ApplicationController
     # @album = Album.find(params[:id])
     @album.destroy
     redirect_to albums_path
+    
   end
 
   def update
@@ -39,14 +40,15 @@ class AlbumsController < ApplicationController
       flash[:error] = "That's not your album!"
       redirect_to albums_path
     else
+      @album = current_user.albums.find(params[:id])
       if @album.update(album_params)
         redirect_to albums_path
       else
         render 'edit'
       end
     end
-    require 'pry'
-    binding.pry
+    # require 'pry'
+    # binding.pry
   end
 
   def delete_image_attachment
@@ -59,6 +61,12 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:user_id, :title, images: [])
+    if params["album"] == nil
+      flash[:error] = "No file selected!"
+      {}
+    else  
+       params.require(:album).permit(:user_id, :title, images: [])
+    end
+    
   end
 end
