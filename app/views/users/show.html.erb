@@ -6,21 +6,24 @@
 <button> <%= link_to 'Albums', albums_path %></button>
 </div>
 <div class="text-center">
-    <%if current_user.id == @user.id && !@user.avatar.attached? %> 
-        <%= form_for current_user do |form| %>
-            <div>
-                <h4 class='avatar-title'>
-                  <%= form.label 'Set your avatar:'  %>
-                </h4>
-
-                <%= form.file_field :avatar, direct_upload: true %>
-                    <p class="avatar-btn">
-                      <%= form.submit "Set avatar" %>
-                    </p>
-            </div>
-        <%end%>
+    <%if current_user.id == @user.id%>
+      <%= form_for current_user do |form| %>
+        <div>
+            <%if !@user.avatar.attached? %> 
+            <h4 class='avatar-title'>
+              <%= form.label 'Set your avatar:'  %>
+            <%else%> 
+            <h4 class='avatar-title2'>
+                <%= form.label 'change your avatar:'  %>
+            <%end%>
+            </h4>
+            <%= form.file_field :avatar, direct_upload: true %>
+                <p class="avatar-btn">
+                  <%= form.submit "Set avatar" %>
+                </p>
+        </div>
+      <%end%>
     <%end%>
-          
     <h1>
       <%= image_tag(@user.avatar, style:'width:5%') if @user.avatar.attached?%>
         <p>

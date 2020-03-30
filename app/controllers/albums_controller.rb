@@ -39,18 +39,18 @@ class AlbumsController < ApplicationController
       flash[:error] = "That's not your album!"
       redirect_to albums_path
     else
-      @album = current_user.albums.find(params[:id])
       if @album.update(album_params)
         redirect_to albums_path
       else
         render 'edit'
       end
     end
+    require 'pry'
+    binding.pry
   end
 
   def delete_image_attachment
     @image = ActiveStorage::Blob.find(params[:id])
-    p '------------------'
     # p @image
     @image.purge_later
     redirect_to albums_url
