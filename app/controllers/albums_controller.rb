@@ -50,7 +50,7 @@ class AlbumsController < ApplicationController
 
   def delete_image_attachment
     @image = ActiveStorage::Blob.find(params[:id])
-    @image.purge_later
+    @image.destroy
     redirect_to albums_url
   end
 
@@ -63,6 +63,5 @@ class AlbumsController < ApplicationController
     else  
        params.require(:album).permit(:user_id, :title, images: [])
     end
-    
   end
 end
