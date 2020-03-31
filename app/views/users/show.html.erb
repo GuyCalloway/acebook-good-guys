@@ -47,9 +47,9 @@
                           method: :delete,
                           data: { confirm: 'Are you sure?' } if current_user.id == post.user_id%>
                           <%= link_to 'Comments', post_path(post) %>
-                          <%like_check = post.likes.find { |like| like.user_id == current_user.id} %>
-                          <%if like_check %>
-                              <%=button_to 'Unlike', post_like_path(post, like_check), method: :delete %>
+                          <%like_check_and_find = post.likes.find { |like| like.user_id == current_user.id} %>
+                          <%if like_check_and_find %>
+                              <%=button_to 'Unlike', post_like_path(post, like_check_and_find), method: :delete %>
                           <%else %>
                               <%=button_to 'Like', post_likes_path(post), method: :post %>
                           <%end %>                     

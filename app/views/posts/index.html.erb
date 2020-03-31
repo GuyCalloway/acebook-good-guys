@@ -9,7 +9,7 @@
                 <tr>
                     <td>
                         <% if post.message.length > 30%>
-                          <%= simple_format(post.message.gsub('<', '< ')[0..30] )%><%= link_to '. . . . ', post_path(post) %>
+                         <%= simple_format(post.message.gsub('<', '< ')[0..30] )%><%= link_to '. . . .', post_path(post) %>
                           <%# check if can create pop up here if greater than 50 %>
                          <%else%>
                            <%= simple_format(post.message.gsub('<', '< '))%>
