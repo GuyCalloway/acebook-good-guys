@@ -10,8 +10,6 @@ class LikesController < ApplicationController
   def destroy
     @like.destroy
     redirect_to post_path(@post)
-    require 'pry'
-    binding.pry
   end
 
   private
