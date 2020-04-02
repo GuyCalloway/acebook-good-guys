@@ -17,6 +17,7 @@ class LikesController < ApplicationController
     else
       @like.destroy
     end
+    redirect_to post_path(@post)
   end
 
   private
