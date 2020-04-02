@@ -52,7 +52,6 @@ class AlbumsController < ApplicationController
     @image = ActiveStorage::Blob.find(params[:id])
     @image.purge_later
     redirect_to albums_url
-    byebug
   end
 
   private

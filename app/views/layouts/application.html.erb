@@ -2,23 +2,20 @@
 <html>
 
 <head>
-    <title>Good Guys Acebook</title>
+  <title>Good Guys Acebook</title>
     <%= csrf_meta_tags %>
-
-        <%= stylesheet_link_tag    'application', media: 'all' %>
-            <%= javascript_include_tag 'application' %>
-                <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
 </head>
 
 <body class="body">
     <div>
-
         <div>
             <% if signed_in? %>
                 <p class="jumbotron">
                     <span class="span"> Signed in as: </span>
                     <br>
-
                     <%= link_to user_path(current_user), class:"username" do %>
                         <p class='username'>
                             <%= current_user.username.capitalize %>
@@ -57,8 +54,7 @@
                         </div>
                         <br>
                         <div class="logo-wrapper">
-                            <img src="/Users/CGB/Projects/goodguys/acebook-good-guys/public/log-good-guys.png"
-                                alt="good guys logo" class='logo'>
+                                <%= image_tag asset_path('log-good-guys.png') %>
                         </div>
                         <br>
                         <br>

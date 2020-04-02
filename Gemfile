@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'turbolinks', '~> 5.2.0'
 gem 'pry'
 gem 'pry-nav'
 gem 'clearance'
